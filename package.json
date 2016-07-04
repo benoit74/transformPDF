@@ -1,0 +1,33 @@
+{
+  "name": "transformPDF",
+  "version": "0.0.1",
+  "description": "A Serverless Project and its Serverless Plugin dependencies.",
+  "author": "me",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/"
+  },
+  "dependencies": {
+    "mailparser": "^0.6.0",
+    "typescript": "^1.8.10"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^2.2.0",
+    "gulp-typescript": "^2.13.6",
+    "karma": "^1.1.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-mocha": "^1.1.1",
+    "karma-requirejs": "^1.0.0",
+    "mocha": "^2.5.3",
+    "requirejs": "^2.2.0"
+  },
+  "scripts": {
+    "prepublish": "tsc",
+    "pretest": "tsc",
+    "test": "mocha ./lib/test"
+  }
+}
