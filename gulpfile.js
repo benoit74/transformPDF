@@ -1,6 +1,19 @@
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var mocha = require('gulp-mocha');
+var rimraf = require('gulp-rimraf');
+var bundle = require('gulp-bundle-assets');
+
+gulp.task('bundle', ['clean'], function() {
+    return gulp.src('./bundle.config.js')
+        .pipe(bundle())
+            .pipe(gulp.dest('./lib'));
+});
+
+gulp.task('clean', function() {
+    return gulp.src('./lib', { read: false })
+        .pipe(rimraf());
+});
 
 gulp.task('scripts', function () {
   var tsProject = ts.createProject('tsconfig.json');

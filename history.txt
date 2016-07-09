@@ -1,0 +1,31 @@
+npm install serverless -g
+serverless project create
+serverless function create functions/main
+serverless dash deploy
+npm install mocha --save-dev
+
+npm install gulp --save-dev
+npm install gulp-typescript --save-dev
+npm install gulp-bundle-assets --save-dev
+npm install gulp-rimraf --save-dev
+
+npm install typescript --save
+
+npm install typings -g
+
+typings init
+typings install dt~mocha --global --save
+
+npm install -g typescript
+  
+npm install mailparser --save
+typings install dt~mailparser --save --global
+typings install dt~node --save --global
+npm install chai --save-dev
+npm install chai-as-promised --save-dev
+typings install dt~chai --global --save
+typings install dt~chai-as-promised --global --save
+
+npm install bluebird
+typings install dt~bluebird --save --global
+
