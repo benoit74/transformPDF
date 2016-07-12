@@ -18,29 +18,21 @@ describe("MailReader", () => {
     });
   });
 
-  describe("#attachmentIsReady", () => {
-    it("attachment is not ready when just started", () => {
-      expect(subject.attachmentIsReady()).to.be.false;
+  describe("#getFileExtension", () => {
+    it("should achieve to parse simple extension", () => {
+      expect(subject.getFileExtension("toto.ext")).to.equal("ext");
+    });
+    it("should achieve to parse extension of file with dots in its name", () => {
+      expect(subject.getFileExtension("toto.fake.ext")).to.equal("ext");
     });
   });
 
   describe("#extractAttachment", () => {
-    it("should achieve to extract Attachment", async function(done) {
-      subject.extractFirstAttachment(__dirname + "/assets/1hci34sbqitamb6clq44o3uvhtn0f2n7q81p7b81", function() {
-        console.log("Hello");
-        expect(subject.attachmentIsReady()).to.be.true;
-        done();  
-      });
+    it("should achieve to extract Attachment", function(done) {
+      subject.extractFirstAttachment(__dirname + "/assets/1hci34sbqitamb6clq44o3uvhtn0f2n7q81p7b81")
+             .then(function (x : MailParser.Attachment){
+               expect(x.fileName).to.equal("N Béraud.docx");done();});
     });
   });
-  
-  describe("#extractAttachment", () => {
-    it("should extract with correct name", () => {
-      var attach = subject.extractFirstAttachment(__dirname + "/assets/1hci34sbqitamb6clq44o3uvhtn0f2n7q81p7b81", function() {});
-      //console.log(attach.then(function(attachment : MailParser.Attachment) { return Promise.resolve(attachment.fileName);}));
-     // return attach.then(function(attachment : MailParser.Attachment) { return Promise.resolve(attachment.fileName);}).should.eventually.equal('N Béraud.docx');
-    });
-  });
-
 
 });
