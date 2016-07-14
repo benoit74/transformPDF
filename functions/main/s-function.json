@@ -14,10 +14,17 @@
   "endpoints": [],
   "events": [
     {
-      "name": "mySchedule",
-      "type": "schedule",
+      "name" : "myS3Event",
+      "type": "s3",
       "config": {
-        "schedule": "rate(5 minutes)"
+        "bucket": "${stageL}-${projectL}-storage",
+        "bucketEvents": ["s3:ObjectCreated:*"],
+        "filterRules": [
+          {
+            "name":"prefix", 
+            "value":"incoming_mails"
+          }
+        ]
       }
     }
   ],
