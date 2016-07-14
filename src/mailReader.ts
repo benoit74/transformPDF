@@ -6,7 +6,6 @@ import FS = require("fs");
 export class MailReader
 {
   private mailParser : MailParser.MailParser;
-  private first : boolean;
 
   constructor() 
   { 
@@ -28,12 +27,14 @@ export class MailReader
     self.mailParser.on("attachment", function(attachment : MailParser.Attachment, mail : MailParser.ParsedMail) {
       var extension = self.getFileExtension(attachment.fileName);
       if (!first && (extension == "doc" || extension == "docx")) {
-        resolve(attachment);
+        var fileName = "/tmp/" + attachment.generatedFileName;
+        var output = FS.createWriteStream(fileName);
+        output.on('close', () => resolve(fileName));
+        attachment.stream.pipe(output);
       }
     });
     FS.createReadStream(fileName).pipe(self.mailParser);
   }); 
   }
-  
 
 }

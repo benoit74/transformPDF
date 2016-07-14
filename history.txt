@@ -29,3 +29,12 @@ typings install dt~chai-as-promised --global --save
 npm install bluebird
 typings install dt~bluebird --save --global
 
+npm install mock-fs --save-dev
+typings install dt~mock-fs --save --global
+
+npm install request --save
+typings install npm~request --save
+
+npm install nock --save
+typings install npm~nock --save
+
