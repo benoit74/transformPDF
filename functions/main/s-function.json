@@ -5,8 +5,8 @@
   "customName": false,
   "customRole": false,
   "handler": "main/handler.handler",
-  "timeout": 6,
-  "memorySize": 1024,
+  "timeout": 30,
+  "memorySize": 128,
   "authorizer": {},
   "custom": {
     "excludePatterns": []
