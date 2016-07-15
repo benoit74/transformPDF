@@ -78,7 +78,7 @@
          "CFHelperStack"
       ]
     },
-    "MyFolder": {
+    "IncomingMailsFolder": {
       "Type": "Custom::S3PutObject",
       "Properties": {
         "ServiceToken": { "Fn::GetAtt" : ["CFHelper","S3PutObjectFunctionArn"] },
@@ -86,7 +86,18 @@
         "Key": "incoming_mails/"
       },
       "DependsOn": [
-        "CFHelper"
+        "CFHelper","S3Bucket"
+      ]
+    },
+    "S3PutBucketPolicy": {
+      "Type": "Custom::S3PutBucketPolicy",
+      "Properties": {
+        "ServiceToken": { "Fn::GetAtt" : ["CFHelper", "S3PutBucketPolicyFunctionArn"] },
+        "Bucket": { "Ref": "S3Bucket" },
+        "Policy": "{ \"Version\": \"2008-10-17\", \"Statement\": [ { \"Effect\": \"Allow\", \"Principal\": { \"Service\": \"ses.amazonaws.com\" }, \"Action\": \"s3:PutObject\", \"Resource\": \"arn:aws:s3:::${stageL}-${projectL}-storage/incoming_mails/*\", \"Condition\": { \"StringEquals\": { \"aws:Referer\": \"498397240612\" } } } ] }"
+      },
+      "DependsOn": [
+        "CFHelper","S3Bucket","IncomingMailsFolder"
       ]
     },
     "SesReceiptRule": {
@@ -108,7 +119,7 @@
         "RuleSetName" : "myRuleSet"
       },
       "DependsOn": [
-        "CFHelper"
+        "CFHelper","S3Bucket","IncomingMailsFolder","S3PutBucketPolicy"
       ]
     }
   },
