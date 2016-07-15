@@ -17,7 +17,7 @@ describe("PdfTransformer", () => {
     mockFS.restore();
   });
 
-  describe("#tranformFile", () => {
+  describe("#transformFile", () => {
     it("should achieve to transform", function(done) {
       
       var docContent = FS.readFileSync(__dirname + "/assets/N Béraud.docx");
