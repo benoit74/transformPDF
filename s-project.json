@@ -1,5 +1,7 @@
 {
   "name": "transformPDF",
   "custom": {},
-  "plugins": []
+  "plugins": [
+    "serverless-optimizer-plugin"
+  ]
 }

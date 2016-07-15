@@ -11,6 +11,11 @@
   "custom": {
     "excludePatterns": []
   },
+  "custom": {
+    "optimize": {
+      "exclude": ["aws-sdk"]
+    }
+  },
   "endpoints": [],
   "events": [
     {
