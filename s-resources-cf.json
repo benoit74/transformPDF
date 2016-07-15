@@ -44,6 +44,11 @@
               "Effect": "Allow",
               "Action" : "s3:*",
               "Resource" : "arn:aws:s3:::${stageL}-${projectL}-storage/*"
+            },
+            {
+              "Effect": "Allow",
+              "Action" : "ses:SendEmail",
+              "Resource" : "arn:aws:ses:eu-west-1:498397240612:identity/*"
             }
           ]
         },
