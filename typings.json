@@ -5,6 +5,7 @@
     "request": "registry:npm/request#2.69.0+20160428223725"
   },
   "globalDependencies": {
+    "aws-sdk": "registry:dt/aws-sdk#0.0.0+20160709061101",
     "bluebird": "registry:dt/bluebird#2.0.0+20160701023356",
     "chai": "registry:dt/chai#3.4.0+20160601211834",
     "chai-as-promised": "registry:dt/chai-as-promised#0.0.0+20160423070304",

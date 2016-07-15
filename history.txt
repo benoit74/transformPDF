@@ -38,6 +38,8 @@ typings install npm~request --save
 npm install nock --save
 typings install npm~nock --save
 
+npm install aws-sdk --save
+typings install dt~aws-sdk --save --global
 
 Gotcha :
 - attention aux contraintes AWS ! (contraintes sur les noms de bucket par exemple). L'erreur Serverless n'est pas toujours claire, il faut aller voir dans la console CloudFormation le déploiement qui a échoué pour avoir le détail des problèmes)
