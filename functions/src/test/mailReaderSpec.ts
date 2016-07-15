@@ -36,12 +36,14 @@ describe("MailReader", () => {
   describe("#extractAttachment", () => {
     it("should achieve to extract Attachment", function(done) {
       subject.extractFirstAttachment("/tmp/1hci34sbqitamb6clq44o3uvhtn0f2n7q81p7b81")
-             .then(function (x : string){
+             .then(function (x : any){
                var expectFileName = "/tmp/N Béraud.docx";
-               expect(x).to.equal(expectFileName);
+               expect(x.LocalPath).to.equal(expectFileName);
                var stats = FS.statSync(expectFileName);
                var fileSizeInBytes = stats["size"];
                expect(fileSizeInBytes).to.equal(14764);
+               expect(x.FromEmail.name).to.equal("Benoît Beraud");
+               expect(x.FromEmail.address).to.equal("bberaud@octo.com");
                done();
              });
     });

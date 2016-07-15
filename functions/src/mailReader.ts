@@ -18,7 +18,7 @@ export class MailReader
   
   getFileExtension(filename : string):string {
     return filename.split('.').pop(); 
-  } 
+  }
 
   extractFirstAttachment(fileName: string) {
     var self = this;
@@ -29,7 +29,13 @@ export class MailReader
       if (!first && (extension == "doc" || extension == "docx")) {
         var fileName = "/tmp/" + attachment.generatedFileName;
         var output = FS.createWriteStream(fileName);
-        output.on('close', () => resolve(fileName));
+        output.on('close', () => {
+          var params = {
+            LocalPath : fileName,
+            FromEmail : mail.from[0]
+          }
+          resolve(params);
+        });
         attachment.stream.pipe(output);
       }
     });
