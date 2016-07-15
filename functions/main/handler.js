@@ -1,7 +1,7 @@
 'use strict';
 
 
-var eventProcessor = require("../../lib/eventProcessor");
+var eventProcessor = require("../lib/eventProcessor");
 
 module.exports.handler = function(event, context, cb) {
 //  console.log('Received event:', JSON.stringify(event));
