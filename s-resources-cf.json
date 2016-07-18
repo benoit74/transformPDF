@@ -63,7 +63,23 @@
       "Type" : "AWS::S3::Bucket",
       "Properties": {
         "AccessControl" : "Private",
-        "BucketName" : "${stageL}-${projectL}-storage" 
+        "BucketName" : "${stageL}-${projectL}-storage", 
+        "LifecycleConfiguration" : {
+          "Rules": [
+            {
+              "Id": "outgoing_pdf rule",
+              "Prefix": "outgoing_pdf/",
+              "Status": "Enabled",
+              "ExpirationInDays" : "7"
+            },
+            {
+              "Id": "incoming_mails rule",
+              "Prefix": "incoming_mails/",
+              "Status": "Enabled",
+              "ExpirationInDays" : "7"
+            }
+          ] 
+        }
       },
       "DeletionPolicy" : "Delete"
     },
