@@ -1,6 +1,6 @@
 /bin/
 admin.env
-_meta
 lib
 node_modules
 typings
+_meta/resources

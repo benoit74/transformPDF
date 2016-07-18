@@ -1,0 +1,5 @@
+{
+  "region": "eu-west-1",
+  "resourcesStackName": "transformPDF-prod-r",
+  "iamRoleArnLambda": "arn:aws:iam::498397240612:role/transformPDF-prod-r-IamRoleLambda-1F4N5BEK621UP"
+}
